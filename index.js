@@ -8,7 +8,23 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (args, pos) => {
+  // Check if arguments are valid
+  if (!Array.isArray(args) || (pos && !Number.isInteger(pos)))
+    return "Argument not valid";
+
+  // If position doesn't exist
+  if (!pos && pos !== 0) {
+    let dataDate = [];
+    for (let date of args) {
+      dataDate.push(Date.parse(date) / 1000);
+    }
+    return dataDate.sort().join("-");
+  }
+
+  // If position exists
+  return (Date.parse(args[pos].toString()) / 1000).toString();
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
